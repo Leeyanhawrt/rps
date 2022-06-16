@@ -30,47 +30,46 @@ Reset the game
       switch (numberToAction) {
         case 0:
           return "rock";
-          break;
         case 1:
           return "paper";
-          break;
         case 2:
           return "scissors";
-          break;
       }
     }
 
-    let determineWinner = (computerPlay, playerPlay) => {
-      playerPlay = prompt("What is your action: rock, paper, or scissors?").toLowerCase()
+    let determineWinner = (computerPlay) => {
+      let playerPlay = prompt("What is your action: rock, paper, or scissors?").toLowerCase()
       if (computerPlay === playerPlay) {
-        return "It's a draw!"
+        return console.log("It's a draw!")
       } else if (computerPlay === "rock" && playerPlay === "scissors") {
         computerWins++
-        return "Computer wins! Rock beats Scissors"
+        return console.log("Computer wins! Rock beats Scissors")
       } else if (computerPlay === "paper" && playerPlay === "rock") {
         computerWins++
-        return "Computer wins! Paper beats Rock"
+        return console.log("Computer wins! Paper beats Rock")
       } else if (computerPlay === "scissors" && playerPlay === "paper") {
         computerWins++
-        return "Computer wins! Scissors beats Paper"
+        return console.log("Computer wins! Scissors beats Paper")
       } else {
         playerWins++
-        return "Player Wins!"
+        return console.log("Player Wins!")
       }
     }
 
-    let game = (determineWinner) => {
+    let game = () => {
       for (let i = 0; i < 5; i++) {
-        determineWinner();
+        determineWinner(computerPlay());
       }
       if (computerWins > playerWins) {
-        return "Computer Wins!"
+        return console.log("Final result: Computer Wins!")
       } else if (playerWins > computerWins) {
-        return "Player Wins!"
+        return console.log("Final result: Player Wins!")
       } else {
-        return "It's a draw!"
+        return console.log("Final result: it's a draw!")
       }
     }
+
+game();
 
   </script>
 
