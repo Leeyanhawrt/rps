@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<!-- 
+Collect input from user choosing their action: rock, paper, or scissors 
+Collect random action from computer player 
+Loop through program until a winner is determined after 5 wins 
+Determine rules of the game (when each player is considered the winner)
+Account for any draws that may occur
+Display the winner of the round and add to win count until a player wins 5 times
+Display the winner after 5 games are played
+Reset the game
+-->
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Leeyan's RPS</title>
+</head>
+
+<body>
+  <script>
+
+    let computerWins = 0
+    let playerWins = 0
+
+    let computerPlay = () => {
+      let numberToAction = Math.floor(Math.random() * 3);
+
+      switch (numberToAction) {
+        case 0:
+          return "rock";
+          break;
+        case 1:
+          return "paper";
+          break;
+        case 2:
+          return "scissors";
+          break;
+      }
+    }
+
+    let determineWinner = (computerPlay, playerPlay) => {
+      playerPlay = prompt("What is your action: rock, paper, or scissors?").toLowerCase()
+      if (computerPlay === playerPlay) {
+        return "It's a draw!"
+      } else if (computerPlay === "rock" && playerPlay === "scissors") {
+        computerWins++
+        return "Computer wins! Rock beats Scissors"
+      } else if (computerPlay === "paper" && playerPlay === "rock") {
+        computerWins++
+        return "Computer wins! Paper beats Rock"
+      } else if (computerPlay === "scissors" && playerPlay === "paper") {
+        computerWins++
+        return "Computer wins! Scissors beats Paper"
+      } else {
+        playerWins++
+        return "Player Wins!"
+      }
+    }
+
+    let game = (determineWinner) => {
+      for (let i = 0; i < 5; i++) {
+        determineWinner();
+      }
+      if (computerWins > playerWins) {
+        return "Computer Wins!"
+      } else if (playerWins > computerWins) {
+        return "Player Wins!"
+      } else {
+        return "It's a draw!"
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
